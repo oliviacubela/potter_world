@@ -18,5 +18,11 @@ class PotterDirectory
     @@all
   end
 
+  def self.find_by_name(name)
+    self.all.select do |character|
+      character.name.downcase == name
+    end
+  end
+
 
 end

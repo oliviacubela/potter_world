@@ -2,8 +2,9 @@ class PotterWorld::CLI
 
   def call
     puts "Hello User"
-    puts "To view the directory of wizards and withches, type 'view'"
+    puts "To view the directory of wizards and witches, type 'view'"
     puts "To exit the directory, type 'exit"
+    API.get_data
     menu
   end
 
@@ -21,9 +22,9 @@ class PotterWorld::CLI
   end
 
   def character_list
-    puts "1. character 1"
-    puts "2. character 2"
-    puts "3. character 3"
+    PotterDirectory.all.each_with_index do |character, index|
+      puts "#{index + 1}. #{character.name}"
+    end
     puts ""
     puts ""
     puts "which wizard or witch would you like to know more about?"
@@ -33,7 +34,15 @@ class PotterWorld::CLI
   end
 
   def character_selection(character)
-    #go over character array, create find method to find character selected
+    char = PotterDirectory.find_by_name(character)
+    char.each do |c|
+      puts " Name: #{c.name}"
+      puts " Role: #{c.role}"
+      puts " House: #{c.house}"
+      puts " School: #{c.school}"
+      puts " Species: #{c.species}"
+      # binding.pry
+    end
 
   end
 
