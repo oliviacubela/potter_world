@@ -7,3 +7,4 @@ require_relative "./potter_world/potter_directory.rb"
 require 'rest-client'
 require 'json'
 require 'pry'
+require 'colorize'

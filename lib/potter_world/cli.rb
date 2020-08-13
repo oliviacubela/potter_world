@@ -3,7 +3,7 @@ class PotterWorld::CLI
   def call
     puts "Hello User"
     puts "To view the directory of wizards and witches, type 'view'"
-    puts "To exit the directory, type 'exit"
+    puts "To exit the directory, type 'exit'"
     API.get_data
     menu
   end
@@ -36,12 +36,12 @@ class PotterWorld::CLI
   def character_selection(character)
     char = PotterDirectory.find_by_name(character)
     char.each do |c|
-      puts " Name: #{c.name}"
-      puts " Role: #{c.role}"
-      puts " House: #{c.house}"
-      puts " School: #{c.school}"
-      puts " Species: #{c.species}"
-      # binding.pry
+      puts " Name:".colorize(:red) + " #{c.name}".colorize(:yellow)
+      puts " Role:".colorize(:red) + " #{c.role}".colorize(:yellow)
+      puts " House:".colorize(:red) + " #{c.house}".colorize(:yellow)
+      puts " School:".colorize(:red) + " #{c.school}".colorize(:yellow)
+      puts " Species:".colorize(:red) + " #{c.species}".colorize(:yellow)
+
     end
 
   end
