@@ -1,12 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pry'
-require 'rest-client'
-require 'json'
+require_relative '../lib/potter_world'
 
-require_relative '../lib/api'
-require_relative '../lib/cli'
-require_relative '../lib/potter_directory'
-
-API.get_data
-binding.pry
+PotterWorld::CLI.new.call 
