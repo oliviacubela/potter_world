@@ -51,8 +51,15 @@ class PotterWorld::CLI
   end
 
   def invalid_entry
-    puts "Invalid entry, try again"
-    menu
+    puts "Invalid entry - would you like to go back to the directory? [y/n]"
+    input = gets.strip.downcase
+
+    if input == "y"
+      character_list 
+      menu 
+    else 
+      goodbye 
+    end
   end
 
 
