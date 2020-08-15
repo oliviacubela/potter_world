@@ -3,3 +3,5 @@
 require_relative '../lib/potter_world'
 
 PotterWorld::CLI.new.call 
+
+# API.get_spell_data
