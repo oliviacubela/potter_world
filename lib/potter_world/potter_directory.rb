@@ -18,6 +18,9 @@ class PotterDirectory
     @@all
   end
 
+  #Look at 'add_student_attributes' method in student scraper lab, in 'Student' class
+  #dynamically assigns the student attributes and values per the key/value pais of the hash using send method
+
   def self.find_by_name(name)
     self.all.select do |character|
       character.name.downcase == name

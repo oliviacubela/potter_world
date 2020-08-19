@@ -1,29 +1,32 @@
 class PotterWorld::CLI
 
   def call
-    puts "Hello User"
+    puts "Welcome!"
     puts "To view the directory of wizards, witches, and creatures type 'view'"
     puts "To view the comprehensive spellbook, type 'view spells'"
     puts "To exit, type 'exit'"
-    # puts "To exit the spellbook, type 'exit spellbook"
     API.get_char_data
     API.get_spell_data
     menu
   end
 
   def menu 
+    # puts "To view the directory of wizards, witches, and creatures type 'view'"
+    # puts "To view the comprehensive spellbook, type 'view spells'"
+    # puts "To exit, type 'exit'"
     input = gets.strip.downcase
 
-    if input == "view"
-      character_list 
-      menu 
-    elsif input == "exit"
-      goodbye 
+    if input == "exit"
+      goodbye
+    elsif input == "view"
+      character_list
+      menu
     elsif input == "view spells"
       spell_list
       menu
     else 
-      invalid_entry 
+      invalid_entry
+      menu
     end
   end
 
@@ -47,7 +50,7 @@ class PotterWorld::CLI
       puts " House:".colorize(:red) + " #{c.house}".colorize(:yellow)
       puts " School:".colorize(:red) + " #{c.school}".colorize(:yellow)
       puts " Species:".colorize(:red) + " #{c.species}".colorize(:yellow)
-
+      menu
     end
   end
 
@@ -69,7 +72,6 @@ class PotterWorld::CLI
       puts " Spell:".colorize(:blue) + " #{s.spell}".colorize(:green)
       puts " Type:".colorize(:blue) + " #{s.type}".colorize(:green)
       puts " Effect:".colorize(:blue) + " #{s.effect}".colorize(:green)
-
     end
   end
 
@@ -79,13 +81,13 @@ class PotterWorld::CLI
 
   def invalid_entry
     puts "Invalid entry - would you like to go back to the character directory, or the spellbook?"
-    puts "Type 'spell' for spellbook, or 'directory' for directory."
+    puts "Type 'spell' for spellbook, or 'dir' for directory."
     input = gets.strip.downcase
 
     if input == "spell"
       spell_list 
       menu 
-    elsif input == "directory"
+    elsif input == "dir"
       character_list
       menu
     else 
@@ -93,18 +95,8 @@ class PotterWorld::CLI
     end
   end
 
-  # def invalid_entry_spell
-  #   puts "Invalid entry - would you like to go back to the directory? [y/n]"
-  #   input = gets.strip.downcase 
 
-  #   if input == "y"
-  #     spell_list
-  #     menu
-  #   else
-  #     goodbye
-  #   end
-  # end
-# ---> try to figure out how to get back to spell directory after selecting one spell 
-
+  #probably best to turn menu and invalid_entry methods into a loop, 
+  #rather than a whole bunch of conditionals....
 
 end
