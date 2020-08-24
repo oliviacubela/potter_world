@@ -24,26 +24,6 @@ class PotterWorld::CLI
     end
   end
 
-  # def menu 
-  #   # puts "To view the directory of wizards, witches, and creatures type 'view'"
-  #   # puts "To view the comprehensive spellbook, type 'view spells'"
-  #   # puts "To exit, type 'exit'"
-  #   input = gets.strip.downcase
-
-  #   if input == "exit"
-  #     goodbye
-  #   elsif input == "view"
-  #     character_list
-  #     menu
-  #   elsif input == "view spells"
-  #     spell_list
-  #     menu
-  #   else 
-  #     invalid_entry
-  #     menu
-  #   end
-  # end
-
   def character_list
     PotterDirectory.all.each_with_index do |character, index|
       puts "#{index + 1}. #{character.name}"
@@ -60,10 +40,10 @@ class PotterWorld::CLI
     char = PotterDirectory.find_by_name(character)
     char.each do |c|
       puts " Name:".colorize(:red) + " #{c.name}".colorize(:yellow)
-      puts " Role:".colorize(:red) + " #{c.role}".colorize(:yellow)
-      puts " House:".colorize(:red) + " #{c.house}".colorize(:yellow)
-      puts " School:".colorize(:red) + " #{c.school}".colorize(:yellow)
-      puts " Species:".colorize(:red) + " #{c.species}".colorize(:yellow)
+      puts " Role:".colorize(:red) + " #{c.role}".colorize(:yellow) if c.role 
+      puts " House:".colorize(:red) + " #{c.house}".colorize(:yellow) if c.house
+      puts " School:".colorize(:red) + " #{c.school}".colorize(:yellow) if c.school
+      puts " Species:".colorize(:red) + " #{c.species}".colorize(:yellow) if c.species
     end
   end
 
@@ -87,29 +67,4 @@ class PotterWorld::CLI
       puts " Effect:".colorize(:blue) + " #{s.effect}".colorize(:green)
     end
   end
-
-  # def goodbye
-  #   puts "Goodbye !"
-  # end
-
-  # def invalid_entry
-  #   puts "Invalid entry - would you like to go back to the character directory, or the spellbook?"
-  #   puts "Type 'spell' for spellbook, or 'dir' for directory."
-  #   input = gets.strip.downcase
-
-  #   if input == "spell"
-  #     spell_list 
-  #     menu 
-  #   elsif input == "dir"
-  #     character_list
-  #     menu
-  #   else 
-  #     goodbye 
-  #   end
-  # end
-
-
-  #probably best to turn menu and invalid_entry methods into a loop, 
-  #rather than a whole bunch of conditionals....
-
 end

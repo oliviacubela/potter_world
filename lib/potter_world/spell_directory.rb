@@ -23,7 +23,4 @@ class SpellDirectory
       sp.spell.downcase == spell
     end
   end
-#PotterDirectory & SpellDirectory have the same function/perform the same operations 
-#does this violate DRY ? Should I use inheritance/include/extend??
-
 end
