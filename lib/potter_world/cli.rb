@@ -59,7 +59,7 @@ class PotterWorld::CLI
     spell_selection(input)
   end
 
-  def spell_selection(spell)                        #passes user input to this method, and then outputs using interpolation
+  def spell_selection(spell)                        
     spell = SpellDirectory.find_by_spell_name(spell)
     spell.each do |s|
       puts " Spell:".colorize(:blue) + " #{s.spell}".colorize(:green)
