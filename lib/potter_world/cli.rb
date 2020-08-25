@@ -1,13 +1,13 @@
-class PotterWorld::CLI
+class PotterWorld::CLI 
 
-  def call
+  def call     
     input = ""
 
     API.get_char_data  
-    API.get_spell_data
+    API.get_spell_data  
 
     while input != "exit"
-      puts "Welcome!"
+      puts "Welcome!"       
       puts "To view the directory of wizards, witches, and creatures type 'view'"
       puts "To view the comprehensive spellbook, type 'view spells'"
       puts "To exit, type 'exit'"
@@ -15,16 +15,16 @@ class PotterWorld::CLI
 
       input = gets.strip.downcase
 
-      case input
+      case input               
       when "view"
         character_list
-      when "view spells"
+      when "view spells"     
         spell_list
       end
     end
   end
 
-  def character_list
+  def character_list       
     PotterDirectory.all.each_with_index do |character, index|
       puts "#{index + 1}. #{character.name}"
     end
@@ -36,8 +36,8 @@ class PotterWorld::CLI
     character_selection(input)
   end
 
-  def character_selection(character)
-    char = PotterDirectory.find_by_name(character)
+  def character_selection(character)                
+    char = PotterDirectory.find_by_name(character)  
     char.each do |c|
       puts " Name:".colorize(:red) + " #{c.name}".colorize(:yellow)
       puts " Role:".colorize(:red) + " #{c.role}".colorize(:yellow) if c.role 
@@ -47,7 +47,7 @@ class PotterWorld::CLI
     end
   end
 
-  def spell_list
+  def spell_list                
     SpellDirectory.all.each_with_index do |sp, index|
       puts "#{index + 1}. #{sp.spell}"
     end
@@ -59,7 +59,7 @@ class PotterWorld::CLI
     spell_selection(input)
   end
 
-  def spell_selection(spell)
+  def spell_selection(spell)                        #passes user input to this method, and then outputs using interpolation
     spell = SpellDirectory.find_by_spell_name(spell)
     spell.each do |s|
       puts " Spell:".colorize(:blue) + " #{s.spell}".colorize(:green)
