@@ -24,8 +24,8 @@ class PotterWorld::CLI
     end
   end
 
-  def character_list       
-    PotterDirectory.all.each_with_index do |character, index|
+  def character_list
+    CharacterDirectory.all.sort{ |a, b| a.name <=> b.name }.each_with_index do |character, index|
       puts "#{index + 1}. #{character.name}"
     end
     puts ""
@@ -37,7 +37,7 @@ class PotterWorld::CLI
   end
 
   def character_selection(character)                
-    char = PotterDirectory.find_by_name(character)  
+    char = CharacterDirectory.find_by_name(character)  
     char.each do |c|
       puts " Name:".colorize(:red) + " #{c.name}".colorize(:yellow)
       puts " Role:".colorize(:red) + " #{c.role}".colorize(:yellow) if c.role 
