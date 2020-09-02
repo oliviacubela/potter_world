@@ -5,7 +5,13 @@ require_relative '../lib/potter_world'
 
 PotterWorld::CLI.new.call 
 
-#instantiates a new instance of CLI by calling the .new method, and then invoking the call method
-#Creates new instance of this class, then calls this method on it. We create a new instance of the CLI c we;re initiating a new session of the CLI
+
+
+
+
+
+
+
+
 
 
